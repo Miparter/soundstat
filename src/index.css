@@ -1,0 +1,874 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&family=Sansation:wght@300;400;700&display=swap');
+
+:root {
+  --font-main: 'Sansation', sans-serif;
+  --font-display: 'Zen Dots', cursive;
+  --color-bg: #131825;
+  --color-card: #232D3F;
+  --color-card-hover: #2a3650;
+  --color-green: #00bda4;
+  --color-green-hover: #00a088;
+  --color-text: #f1f5f9;
+  --color-muted: #98ccd0;
+  --color-border: #2a3a50;
+  --color-input-bg: #161f2e;
+  --color-accent: #0a8160;
+  --color-accent2: #008170;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  min-height: 100vh;
+}
+
+.home {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0 3rem;
+}
+
+.logo {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--color-green), #0ea35a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  cursor: pointer;
+}
+
+.tagline {
+  color: var(--color-muted);
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.search-wrapper {
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.6rem 1rem;
+  gap: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--color-green);
+}
+
+.search-icon {
+  font-size: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: var(--font-main);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.search-input::placeholder {
+  color: #666;
+  font-family: var(--font-main);
+  font-weight: 300;
+}
+
+.search-button {
+  background: var(--color-green);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.search-button:hover {
+  background: var(--color-green-hover);
+  transform: scale(1.05);
+}
+
+.search-types {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.type-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  border-radius: 50px;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: var(--font-main);
+  transition: all 0.2s;
+}
+
+.type-btn:hover {
+  border-color: var(--color-green);
+  color: var(--color-text);
+}
+
+.type-btn.active {
+  background: var(--color-green);
+  border-color: var(--color-green);
+  color: #000;
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-muted);
+  margin-top: 2rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.result-card {
+  background: var(--color-card);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: var(--color-card-hover);
+  box-shadow: 0 8px 24px rgba(0, 189, 164, 0.15);
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 0.8rem;
+}
+
+.card-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-sub {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.artist-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.back-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  border-radius: 50px;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  border-color: var(--color-green);
+  color: var(--color-text);
+}
+
+.artist-hero {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.artist-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 40px rgba(0, 189, 164, 0.3);
+}
+
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.artist-name {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.artist-followers {
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.artist-popularity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.popularity-bar {
+  width: 180px;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.popularity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-green), var(--color-accent2));
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.artist-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.genre-tag {
+  background: var(--color-card);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  border-radius: 50px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.genre-tag:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.track-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.track-hero {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.track-album-cover {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 40px rgba(0, 189, 164, 0.2);
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 0.5rem;
+}
+
+.track-album-name {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.track-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.track-artist {
+  color: var(--color-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.track-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.meta-tag {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  border-radius: 50px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.vibe-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-green));
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  width: fit-content;
+}
+
+.play-placeholder {
+  background: var(--color-card);
+  border: 1px dashed var(--color-border);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.track-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+}
+
+.chart-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+.radar-wrapper {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.bar-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.bar-wrapper-tall {
+  height: 200px;
+  width: 100%;
+}
+
+.feature-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.feature-label {
+  width: 110px;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+.feature-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.feature-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-green), var(--color-accent));
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.feature-value {
+  width: 30px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: right;
+}
+
+.track-stats-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+
+.gauge-wrapper {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gauge-label {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.duration-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-card-title {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.duration-big {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-text);
+}
+
+.duration-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.duration-bar-bg {
+  position: relative;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: 10px;
+  overflow: visible;
+}
+
+.duration-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0a8160, #00bda4);
+  border-radius: 10px;
+  transition: width 1s ease;
+}
+
+.duration-avg-marker {
+  position: absolute;
+  top: -4px;
+  width: 3px;
+  height: 18px;
+  background: #98ccd0;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.duration-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.avg-label {
+  color: #98ccd0;
+}
+
+.timeline-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.timeline-album {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeline-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 0.2s;
+}
+
+.timeline-dot.active {
+  background: #00bda4;
+  box-shadow: 0 0 8px rgba(0, 189, 164, 0.6);
+  transform: scale(1.3);
+}
+
+.timeline-label {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.detail-card {
+  margin-top: 0;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+  gap: 1rem;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.muted-small {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.explicit-tag {
+  border-color: #e53e3e;
+  color: #e53e3e;
+}
+
+.explicit-small {
+  background: #e53e3e;
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  margin-left: 0.3rem;
+  font-weight: 700;
+}
+
+.album-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.album-hero {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.album-cover {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 40px rgba(0, 189, 164, 0.2);
+}
+
+.album-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 0.5rem;
+}
+
+.album-type {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.album-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.album-artist {
+  color: var(--color-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.album-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.tracklist-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+}
+
+.tracklist {
+  display: flex;
+  flex-direction: column;
+}
+
+.tracklist-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tracklist-row:last-child {
+  border-bottom: none;
+}
+
+.tracklist-row:hover {
+  background: var(--color-card-hover);
+}
+
+.track-number {
+  width: 24px;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.tracklist-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tracklist-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tracklist-artists {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tracklist-duration {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.album-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .track-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-content {
+    grid-template-columns: 1fr;
+  }
+
+  .album-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .album-name {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .artist-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .artist-name {
+    font-size: 2rem;
+  }
+
+  .artist-popularity {
+    justify-content: center;
+  }
+
+  .artist-genres {
+    justify-content: center;
+  }
+
+  .track-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .track-name {
+    font-size: 1.8rem;
+  }
+
+  .track-meta {
+    justify-content: center;
+  }
+
+  .track-charts {
+    grid-template-columns: 1fr;
+  }
+}
