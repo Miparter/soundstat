@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import SearchBar from "../components/serchbor"
+import SearchBar from "../components/SearchBar"
 
 function Home() {
   const [results, setResults] = useState(null)
